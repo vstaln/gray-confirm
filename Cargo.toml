@@ -1,0 +1,17 @@
+[package]
+name = "gray-confirm"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.91"
+license = "MIT"
+description = "confirm plugin for the gray agent harness"
+
+[[bin]]
+name = "gray-confirm"
+path = "src/main.rs"
+
+[dependencies]
+serde_json = "1"
+
+[profile.release]
+strip = true
