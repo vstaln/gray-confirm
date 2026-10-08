@@ -1,8 +1,13 @@
-# gray-confirm
-
-Confirmation gate for dangerous `bash` commands — a gray sidecar plugin.
-Port of pi's `permission-gate` + `confirm-destructive` + `timed-confirm`
-extensions.
+<p align="center">
+  <img src="assets/gray-logo.svg" alt="gray" width="96">
+</p>
+<h1 align="center">gray-confirm</h1>
+<p align="center">A confirmation gate in front of dangerous bash commands — fail closed by default.</p>
+<p align="center">
+  <a href="https://github.com/vstaln/gray-confirm/blob/main/LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+  <img alt="gray plugin" src="https://img.shields.io/badge/gray-plugin-7aa2f7.svg">
+  <img alt="rust" src="https://img.shields.io/badge/built%20with-rust-orange.svg">
+</p>
 
 `tool/before` scans every `bash` command for dangerous patterns and, on a
 match, asks via `host/ask` whether to run it. Empty, timed-out, or
@@ -24,7 +29,7 @@ Invalid regexes are skipped (listed by `/confirm list`).
 
 ## Timed confirm
 
-`~/.gray/confirm/config.json` ports pi's `timed-confirm`:
+`~/.gray/confirm/config.json` controls the timeout and the default verdict:
 
 ```json
 {"timeout_secs": 30, "default": "deny"}
@@ -57,7 +62,7 @@ gray plugin capabilities confirm --all   # grants host.ask
 ```
 
 Without the `host.ask` grant the gate still works: every dangerous command
-denies with "no confirmation channel" (pi's headless behavior).
+denies with "no confirmation channel" — the gate stays fail-closed.
 
 ## Develop
 
@@ -66,3 +71,7 @@ cargo test
 cargo build --release
 gray account check
 ```
+
+---
+Part of the [gray](https://github.com/vstaln/gray) plugin ecosystem —
+the open-source AI agent harness. <https://gray.alignment.id>

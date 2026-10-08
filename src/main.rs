@@ -1,14 +1,13 @@
 //! gray-confirm — confirmation gate for dangerous bash commands.
 //!
-//! Port of pi's `permission-gate` + `confirm-destructive` + `timed-confirm`
-//! extensions: `tool/before` on `bash` scans the command for dangerous
+//! `tool/before` on `bash` scans the command for dangerous
 //! patterns (rm -rf, sudo, chmod 777, dd, mkfs, shred, > /dev/, kill -9 1,
 //! git push --force, git reset --hard, plus user regexes from
 //! ~/.gray/confirm/patterns.json) and, on a match, asks the user through
 //! `host/ask` (capability `host.ask`). Empty/timeout/error answers deny —
 //! the gate fails closed.
 //!
-//! Timed confirm (pi's `timed-confirm`) is a config object here:
+//! Timed confirm is a config object here:
 //! ~/.gray/confirm/config.json = {"timeout_secs": N, "default": "deny"|"allow"}.
 //! `timeout_secs` 0 (the default) means "host default": the sidecar waits
 //! up to its internal 300s TTL and the host's own ask TTL applies. A timeout
