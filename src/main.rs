@@ -323,7 +323,8 @@ fn main() {
                 let _ = tx.send(v.get("result").cloned().unwrap_or(Value::Null));
                 continue;
             }
-            if v.get("id").is_some() && work_tx.send(v).is_err() {
+            let shutdown = v.get("method").and_then(Value::as_str) == Some("plugin/shutdown");
+            if (v.get("id").is_some() || shutdown) && work_tx.send(v).is_err() {
                 break;
             }
         }
