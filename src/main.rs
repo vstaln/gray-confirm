@@ -56,7 +56,7 @@ fn manifest() -> Value {
         "version": env!("CARGO_PKG_VERSION"),
         "protocol": "2.0",
         "tools": [],
-        "description": "approve",
+        "description": "approve or block a tool call before it runs",
         "commands": ["/confirm"],
         "hooks": ["tool/before"],
         "capabilities": ["host.ask"],
