@@ -58,6 +58,7 @@ fn manifest() -> Value {
         "tools": [],
         "description": "approve or block a tool call before it runs",
         "commands": ["/confirm"],
+        "command_descriptions": {"/confirm": "list or toggle dangerous-command prompts"},
         "hooks": ["tool/before"],
         "capabilities": ["host.ask"],
     })
